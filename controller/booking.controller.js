@@ -177,7 +177,7 @@ exports.getBookedDates = async (req, res) => {
   }
 };
 
-export const updateBooking = async (req, res) => {
+exports.updateBooking = async (req, res) => {
   const bookingId = req.params.id;
   const updateData = req.body;
 
