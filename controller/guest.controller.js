@@ -1,59 +1,59 @@
 const Guest = require("../model/guest");
 
-exports.createGuest = async (req, res) => {
-  const { fullName, email } = req.body;
+// exports.createGuest = async (req, res) => {
+//   const { fullName, email } = req.body;
 
-  if (!fullName || !email) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Full name and email are required" });
-  }
-
-  try {
-    let guest = await Guest.findOne({ email });
-
-    if (guest) {
-      return res.status(200).json({
-        success: true,
-        message: "Guest already exists, signed in successfully",
-        guest,
-      });
-    }
-
-    guest = await Guest.create({ fullName, email });
-
-    return res.status(201).json(guest);
-  } catch (error) {
-    console.error("Error creating guest:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-    });
-  }
-};
-
-// exports.getGuest = async (req, res) => {
-//   const email = req.params.email;
-
-//   if (!email)
-//     return res.status(400).json({ success: false, message: "Invalid email" });
+//   if (!fullName || !email) {
+//     return res
+//       .status(400)
+//       .json({ success: false, message: "Full name and email are required" });
+//   }
 
 //   try {
-//     const guest = await Guest.findOne({ email });
-//     if (!guest) {
-//       return res
-//         .status(400)
-//         .json({ success: false, message: "Guest not found" });
+//     let guest = await Guest.findOne({ email });
+
+//     if (guest) {
+//       return res.status(200).json({
+//         success: true,
+//         message: "Guest already exists, signed in successfully",
+//         guest,
+//       });
 //     }
+
+//     guest = await Guest.create({ fullName, email });
+
 //     return res.status(201).json(guest);
 //   } catch (error) {
-//     console.error("Error in guest route:", error);
+//     console.error("Error creating guest:", error);
 //     return res.status(500).json({
 //       success: false,
-//       message: "Internal server error ",
+//       message: "Internal server error",
 //     });
 //   }
 // };
+
+exports.getGuest = async (req, res) => {
+  const email = req.params.email;
+
+  if (!email)
+    return res.status(400).json({ success: false, message: "Invalid email" });
+
+  try {
+    const guest = await Guest.findOne({ email });
+    if (!guest) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Guest not found" });
+    }
+    return res.status(201).json(guest);
+  } catch (error) {
+    console.error("Error in guest route:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error ",
+    });
+  }
+};
 
 // exports.updateGuest = async (req, res) => {
 //   const guestId = req.params.id;
