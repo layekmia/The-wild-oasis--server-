@@ -1,4 +1,4 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const Guest = require("../model/guest");
 
 exports.createGuest = async (req, res) => {
@@ -55,7 +55,6 @@ exports.getGuest = async (req, res) => {
     });
   }
 };
-
 
 exports.updateGuest = async (req, res) => {
   const guestId = req.params.id;
