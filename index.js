@@ -12,7 +12,12 @@ const connectDB = require("./config/db");
 const app = express();
 
 app.use(
-  cors()
+  cors({
+    origin: ["http://localhost:3000"], // allow only my front-end
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"], // allow cookies or tokens if needed
+  })
 );
 app.use(express.json());
 
