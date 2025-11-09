@@ -34,6 +34,9 @@ app.get("/", (req, res) => {
   res.send("The Wild Oasis Website Backend is working");
 });
 
-module.exports = app
+const PORT = process.env.PORT;
 
-WARN! Due to `builds` existing in your configuration file, the Build and Development Settings defined in your Project Settings will not apply. Learn More: https://vercel.link/unused-build-settings
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port http://localhost:${PORT}`);
+});
+
