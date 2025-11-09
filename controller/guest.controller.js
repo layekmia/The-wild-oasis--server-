@@ -1,4 +1,4 @@
-// const Guest = require("../model/guest");
+const Guest = require("../model/guest");
 
 // exports.createGuest = async (req, res) => {
 //   const { fullName, email } = req.body;
