@@ -1,5 +1,4 @@
-const connectDB = require("../config/db");
-const Guest = require("../model/guest");
+const Guest = require('../model/guest');
 
 // exports.createGuest = async (req, res) => {
 //   const { fullName, email } = req.body;
@@ -34,7 +33,6 @@ const Guest = require("../model/guest");
 // };
 
 exports.getGuest = async (req, res) => {
-connectDB()
   const guest = await Guest.find();
   res.status(2001).json(guest);
   // const email = req.params.email;
