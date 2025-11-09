@@ -6,5 +6,6 @@ const router = express.Router();
 // router.post('/', createGuest);
 // router.get("/", getGuest);
 // router.patch('/:id/update', updateGuest);
+router.get('/', (req, res)=> {res.send("Hello")})
 
 module.exports = router;
